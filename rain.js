@@ -1,8 +1,7 @@
+const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 /* Efeito chuva de números(matrix rain)*/
 const content = document.getElementById('matrix')
 const context = content.getContext('2d')
-
-const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
 content.width = window.innerWidth
 content.height = window.innerHeight

@@ -2,7 +2,6 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MathGame</title>
     <link rel="stylesheet" href="style.css">
@@ -10,10 +9,15 @@
 <body>
     <canvas id="matrix"></canvas>
     <div class="container">
-        <h1>Math Game</h1>
-        <a href="game.html">Play</a>
+        <h2 id="calc">(2+5)-(4+1)</h2>
+        <input type="text" placeholder="Resposta..." id="resposta">
+        <div style="display: flex; justify-content: space-between;">
+            <p id="pontos">Pontos: 0</p>
+            <p id='timer'>&#x23F2 10s</h1>
+        </div>
     </div>
     <footer>made by <a href="https://github.com/rafssunny" target="_blank" rel="external">rafssunny</a></footer>
     <script src="rain.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>

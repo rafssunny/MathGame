@@ -24,7 +24,7 @@ canvas{
     z-index: 0;
 }
 
-.menu{
+.container{
   position: fixed;
   top: 50%;
   left: 50%;
@@ -39,12 +39,12 @@ canvas{
   border: 2px solid white;
 }
 
-.menu > h1{
+.container > h1{
     font-family: 'math-font';
     font-size: 7em;
 }
 
-.menu > a{
+.container > a{
     display: block;
     width: 50%;
     margin: auto;
@@ -56,7 +56,7 @@ canvas{
     padding: 5px;
 }
 
-.menu > a:hover{
+.container > a:hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(255, 244, 244, 0.349);
 }
@@ -77,6 +77,39 @@ footer{
     text-align: center;
     backdrop-filter: blur(2px);
 }
+
+#calc{
+    border: 2px solid rgba(255, 255, 255, 0.315);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+#resposta {
+  max-width: 190px;
+  padding: 0.875rem;
+  font-size: 1rem;
+  border: 1.5px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 2.5px 3px 0 #000;
+  outline: none;
+  transition: ease 0.25s;
+}
+
+#resposta:focus {
+  box-shadow: 5.5px 7px 0 rgba(255, 255, 255, 0.219);
+}
+
+.container  p{
+    font-family: 'math-font';
+    font-size: 2em;
+    padding-top: 20px;
+}
+
+.container > h2{
+    font-size: 6em;
+}
+
 
 footer > a{
     color: white;
