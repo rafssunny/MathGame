@@ -8,70 +8,13 @@
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+
+canvas{
+    display: block;
 }
 
 body{
-    background-image: linear-gradient(to bottom, #0752a896, #011c3a);
-    background-attachment: fixed;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-header > h1{
-    font-family: 'math-font', Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    font-size: 10em;
-    color: white;
-}
-
-header > p{
-    text-align: center;
-    margin: auto;
-    color: rgba(94, 236, 94, 0.774);
-    font-size: 2em;
-    font-weight: bolder;
-
-}
-
-main{
-    margin-top: 50px;
-}
-
-main > button {
-    display: block;
-    width: 300px;
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    margin: auto;
-}
-
-button:hover {
-  background-color: #365dca;
-  box-shadow: 0px 15px 20px rgba(58, 46, 229, 0.4);
-  color: #fff;
-  transform: translateY(-7px);
-}
-
-button:active {
-  transform: translateY(-1px);
-}
-
-footer{
-    background-color: white;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
 }
