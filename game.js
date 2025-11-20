@@ -1,8 +1,11 @@
 /*Lógica do jogo*/
-const numbers_int = [1, 2, 3, 4, 5, 6, 7, 8, 9,]
+const numbers_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 const timer = document.getElementById('timer')
 let easy_seconds = 10
+
+let points = 0
+const points_html = document.getElementById('pontos')
 
 function randomnumbers(numbers, quantidade){
     const selecionados = []
@@ -21,6 +24,7 @@ function random_eq_easy(){
     let resposta = (n1+n2)-(n3+n4)
     let calculo = document.getElementById('calc')
     calculo.textContent = (`(${n1}+${n2})-(${n3}+${n4})`)
+    return resposta
 }
 
 setInterval(updatecountdown, 1000)
@@ -32,13 +36,24 @@ function updatecountdown(){
     }
 }
 
-random_eq_easy()
+r = random_eq_easy()
 
 const input = document.getElementById('resposta')
-let input_resposta = input.value
-
+let input_resposta = input.value.trim()
 input.addEventListener('keydown', function(e){
     if(e.code === 'Enter'){
-        random_eq_easy()
+        input_resposta = input.value.trim()
+        if (input_resposta == r){
+            console.log('correto')
+            r = random_eq_easy()
+            points++
+            points_html.textContent = ('Pontos: ' + points)
+            input.value = ''
+        }
+        else{
+            console.log('incorreto')
+            input.value = ''
+        }
     }
-})
+    }
+)
