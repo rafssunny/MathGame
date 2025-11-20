@@ -1,17 +1,20 @@
 /*Lógica do jogo*/
+
+/* vars */
 const numbers_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
 const timer = document.getElementById('timer')
-let easy_seconds = 10
+let seconds = 10
 
 let points = 0
 const points_html = document.getElementById('pontos')
 
+/* funcoes de equacao*/
 function randomnumbers(numbers, quantidade){
     const selecionados = []
     const numbers_array = [...numbers]
 
-    for (let i =0; i < quantidade && numbers.length > 0; i++){
+    for (let i = 0; i < quantidade && numbers.length > 0; i++){
         const indice = Math.floor(Math.random() * numbers_array.length)
         selecionados.push(numbers_array[indice])
     }
@@ -21,23 +24,38 @@ function randomnumbers(numbers, quantidade){
 
 function random_eq_easy(){
     let [n1, n2, n3, n4] = randomnumbers(numbers_int, 4)
-    let resposta = (n1+n2)-(n3+n4)
+    let resposta = (n1-n2)+(n3+n4)
     let calculo = document.getElementById('calc')
-    calculo.textContent = (`(${n1}+${n2})-(${n3}+${n4})`)
+    calculo.textContent = (`(${n1}-${n2})+(${n3}+${n4})`)
     return resposta
 }
 
-setInterval(updatecountdown, 1000)
-function updatecountdown(){
-    easy_seconds--
-    timer.textContent = (`⏱️${easy_seconds}s`)
-    if (easy_seconds == 0){
-       easy_seconds+=10
+/* funcoes de timer*/
+let interval_id 
+function updatetime(){
+    seconds--
+    timer.textContent = (`⏱️${seconds}s`)
+    if (seconds == 0){
+        stoptime()
     }
 }
+function startime(){
+    seconds = 10
+    timer.textContent = (`⏱️${seconds}s`)
+    interval_id = setInterval(updatetime, 1000)
+    updatetime()
+}
+function stoptime(){
+    clearInterval(interval_id)
+    console.log('perdeste')
+}
 
+/* iniciar*/
 r = random_eq_easy()
+startime()
 
+
+/* logica de pegar entrada */
 const input = document.getElementById('resposta')
 let input_resposta = input.value.trim()
 input.addEventListener('keydown', function(e){
@@ -49,10 +67,12 @@ input.addEventListener('keydown', function(e){
             points++
             points_html.textContent = ('Pontos: ' + points)
             input.value = ''
+            startime()
         }
         else{
             console.log('incorreto')
             input.value = ''
+            stoptime()
         }
     }
     }
