@@ -49,6 +49,7 @@ function startime(){
 }
 function stoptime(){
     clearInterval(interval_id)
+    final_points.textContent = `Sua pontuação: ${points}`
     loser_tela.style.display = 'block'
 }
 
