@@ -1,5 +1,4 @@
 /*Lógica do jogo*/
-
 /* vars */
 const numbers_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
@@ -8,6 +7,9 @@ let seconds = 10
 
 let points = 0
 const points_html = document.getElementById('pontos')
+
+const loser_tela = document.querySelector('.loser')
+const final_points = document.getElementById('final_points')
 
 /* funcoes de equacao*/
 function randomnumbers(numbers, quantidade){
@@ -40,23 +42,23 @@ function updatetime(){
     }
 }
 function startime(){
-    seconds = 10
+    seconds = 11
     timer.textContent = (`⏱️${seconds}s`)
     interval_id = setInterval(updatetime, 1000)
     updatetime()
 }
 function stoptime(){
     clearInterval(interval_id)
-    console.log('perdeste')
+    loser_tela.style.display = 'block'
 }
 
 /* iniciar*/
 r = random_eq_easy()
 startime()
 
-
 /* logica de pegar entrada */
 const input = document.getElementById('resposta')
+input.focus()
 let input_resposta = input.value.trim()
 input.addEventListener('keydown', function(e){
     if(e.code === 'Enter'){
@@ -67,10 +69,10 @@ input.addEventListener('keydown', function(e){
             points++
             points_html.textContent = ('Pontos: ' + points)
             input.value = ''
+            clearInterval(interval_id)
             startime()
         }
         else{
-            console.log('incorreto')
             input.value = ''
             stoptime()
         }

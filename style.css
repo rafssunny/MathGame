@@ -56,7 +56,7 @@ canvas{
     padding: 5px;
 }
 
-.container > a:hover{
+.container > a:hover, .loser > a:hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(255, 244, 244, 0.349);
 }
@@ -110,6 +110,43 @@ footer{
     font-size: 6em;
 }
 
+.loser{
+    position: fixed;
+    display: none;
+    width: 400px;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 11;  
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px); 
+    border: 2px solid white;
+}
+
+.loser > h1{
+    margin-bottom: 30px;
+    font-size: 3em;
+}
+.loser > h2{
+    margin-bottom: 30px;
+}
+.loser > a{
+    display: block;
+    width: 100%;
+    margin: auto;
+    text-decoration: none;
+    letter-spacing: 5px;
+    font-size: 1.5em;
+    color: white;
+    border: 2px solid white;
+    margin-bottom: 30px;
+    padding: 5px;
+}
 
 footer > a{
     color: white;
