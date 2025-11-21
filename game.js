@@ -12,42 +12,37 @@ const final_points = document.getElementById('final_points')
 /* funcoes de equacao*/
 function genvalues(){
     let selecionados = []
-    n2 = Math.floor(Math.random() * 20)
-    n4 = Math.floor(Math.random() * 20)
-    n1 = 0
-    n3 = 0
-    while(n1 < n2){
-        n1 = Math.floor(Math.random() * 30)
-    }
-    while(n3 < 4){
-        n3 = Math.floor(Math.random() * 30)
-    }
-    selecionados.push(n1, n2, n3, n4)
+    let numbers_square = [4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 400]
+    n1 = Math.floor(Math.random() * 101)
+    n2 = Math.floor(Math.random() * 51)
+    n3 = Math.floor(Math.random() * 11)
+    n4 = numbers_square[Math.floor(Math.random() * numbers_square.length)]
+    n5 = Math.floor(Math.random() * 10)
+    selecionados.push(n1, n2, n3, n4, n5)
     return selecionados
 }
 function genequations(){
-    let [n1, n2, n3, n4] = genvalues()
+    let [n1, n2, n3, n4, n5] = genvalues()
     let random_number = Math.floor(Math.random() * 4)
     switch(random_number){
-        case 0: 
-            result = n3*n4
-            return [`${n3}*${n4}`, result]
-        case 1:
+        case 0:
             result = n1-n2
             return [`${n1}-${n2}`, result]
+        case 1: 
+            result = n1*n3
+            return [`${n1}x${n2}`, result]
         case 2:
-            result = (n1+n2) * n3
-            return [`(${n1}+${n2}) x ${n3}`, result]
-        case 3: 
-            result = (n1+n2) * (n3-n4)
-            return [`(${n1}+${n2}) x (${n3}-${n4})`, result]
+            result = Math.sqrt(n4) + n1
+            return [`√${n4} + ${n1}`, result]
+        case 3:
+            result = Math.sqrt(n4) + (n5*n5)
+            return [`√${n4} + ${n5}²`, result]
     }
 }
 function showequation(){
     const equation_DOM = document.getElementById('calc')
     let[equation, result] = genequations()
     equation_DOM.textContent = equation
-    console.log(equation, result)
     return result
 }
 
@@ -70,6 +65,7 @@ function stoptime(){
     clearInterval(interval_id)
     final_points.textContent = `Sua pontuação: ${points}`
     loser_tela.style.display = 'block'
+    input.blur()
 }
 
 /* iniciar*/
