@@ -1,7 +1,5 @@
 /*Lógica do jogo*/
 /* vars */
-const numbers_int = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20]
-
 const timer = document.getElementById('timer')
 let seconds = 10
 
@@ -12,24 +10,45 @@ const loser_tela = document.querySelector('.loser')
 const final_points = document.getElementById('final_points')
 
 /* funcoes de equacao*/
-function randomnumbers(numbers, quantidade){
-    const selecionados = []
-    const numbers_array = [...numbers]
-
-    for (let i = 0; i < quantidade && numbers.length > 0; i++){
-        const indice = Math.floor(Math.random() * numbers_array.length)
-        selecionados.push(numbers_array[indice])
+function genvalues(){
+    let selecionados = []
+    n2 = Math.floor(Math.random() * 20)
+    n4 = Math.floor(Math.random() * 20)
+    n1 = 0
+    n3 = 0
+    while(n1 < n2){
+        n1 = Math.floor(Math.random() * 30)
     }
-
+    while(n3 < 4){
+        n3 = Math.floor(Math.random() * 30)
+    }
+    selecionados.push(n1, n2, n3, n4)
     return selecionados
 }
-
-function random_eq_easy(){
-    let [n1, n2, n3, n4] = randomnumbers(numbers_int, 4)
-    let resposta = (n1-n2)+(n3+n4)
-    let calculo = document.getElementById('calc')
-    calculo.textContent = (`(${n1}-${n2})+(${n3}+${n4})`)
-    return resposta
+function genequations(){
+    let [n1, n2, n3, n4] = genvalues()
+    let random_number = Math.floor(Math.random() * 4)
+    switch(random_number){
+        case 0: 
+            result = n3*n4
+            return [`${n3}*${n4}`, result]
+        case 1:
+            result = n1-n2
+            return [`${n1}-${n2}`, result]
+        case 2:
+            result = (n1+n2) * n3
+            return [`(${n1}+${n2}) x ${n3}`, result]
+        case 3: 
+            result = (n1+n2) * (n3-n4)
+            return [`(${n1}+${n2}) x (${n3}-${n4})`, result]
+    }
+}
+function showequation(){
+    const equation_DOM = document.getElementById('calc')
+    let[equation, result] = genequations()
+    equation_DOM.textContent = equation
+    console.log(equation, result)
+    return result
 }
 
 /* funcoes de timer*/
@@ -54,8 +73,9 @@ function stoptime(){
 }
 
 /* iniciar*/
-r = random_eq_easy()
+result = showequation()
 startime()
+
 
 /* logica de pegar entrada */
 const input = document.getElementById('resposta')
@@ -64,9 +84,8 @@ let input_resposta = input.value.trim()
 input.addEventListener('keydown', function(e){
     if(e.code === 'Enter'){
         input_resposta = input.value.trim()
-        if (input_resposta == r){
-            console.log('correto')
-            r = random_eq_easy()
+        if (input_resposta == result){
+            result = showequation()
             points++
             points_html.textContent = ('Pontos: ' + points)
             input.value = ''
