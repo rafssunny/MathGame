@@ -111,7 +111,7 @@ startime()
 /* logica de pegar entrada */
 const input = document.getElementById('resposta')
 input.focus()
-input.addEventListener('keydown', function(e){
+input.addEventListener('keyup', function(e){
     if(e.code === 'Enter'){
         input_resposta = input.value.trim()
         if (input_resposta.trim() == result){
