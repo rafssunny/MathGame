@@ -77,6 +77,14 @@ canvas{
     font-size: 5em;
 }
 
+.container-game > button{
+    margin-left: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(148, 241, 148, 0.808);
+    box-shadow: 2px 2px 2px 2px rgba(85, 214, 113, 0.459);
+}
+
 #calc{
     border: 2px solid rgba(255, 255, 255, 0.315);
     margin-top: 20px;

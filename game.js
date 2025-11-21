@@ -96,7 +96,31 @@ function stoptime(){
     lose_screen()
 }
 
+/* checar se é vitoria ou derrota*/
+function check(){
+    input_resposta = input.value.trim()
+    if (input_resposta.trim() == result){
+        win()
+    }
+    else if(input.value.trim() == ''){}
+    else{
+        lose()
+    }
+    }
+/* caso de vitoria*/
+function win(){
+    result = showexpress()
+    points++
+    points_html.textContent = ('Pontos: ' + points)
+    input.value = ''
+    clearInterval(interval_id)
+    startime() 
+}
 /* caso de derrota*/
+function lose(){
+    input.value = ''
+    stoptime()
+}
 function lose_screen(){
     final_points.textContent = `Sua pontuação: ${points}`
     loser_tela.style.display = 'block'
@@ -111,22 +135,9 @@ startime()
 /* logica de pegar entrada */
 const input = document.getElementById('resposta')
 input.focus()
-input.addEventListener('keyup', function(e){
+input.addEventListener('keydown', function(e){
     if(e.code === 'Enter'){
-        input_resposta = input.value.trim()
-        if (input_resposta.trim() == result){
-            result = showexpress()
-            points++
-            points_html.textContent = ('Pontos: ' + points)
-            input.value = ''
-            clearInterval(interval_id)
-            startime()
-        }
-        else if(input.value.trim() == ''){}
-        else{
-            input.value = ''
-            stoptime()
-        }
+        check()
     }
     }
 )
