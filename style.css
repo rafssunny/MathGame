@@ -83,7 +83,7 @@ canvas{
     height: 40px;
     background-color: rgba(148, 241, 148, 0.808);
     box-shadow: 2px 2px 2px 2px rgba(85, 214, 113, 0.459);
-    transform: translateY(10px);
+    transform: translateY(12px);
 }
 
 .container-game img{
