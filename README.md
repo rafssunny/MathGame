@@ -3,7 +3,7 @@
 <img width="1366" height="629" alt="tela inicial do site" src="https://github.com/user-attachments/assets/7935b31f-5312-4789-a9cc-257cefed9db9" />
 
 <p align="center">
-  <a href="https://rafssunny.github.io/MathGame/" style="font-size: 28px; font-weight: bold;">
+  <a href="https://rafssunny.github.io/MathGame/" target="_blank" rel="external" style="font-size: 28px; font-weight: bold;">
      Acesse aqui 
   </a>
 </p>
