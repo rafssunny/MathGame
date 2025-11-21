@@ -68,7 +68,7 @@ canvas{
     padding: 5px;
 }
 
-.container > a:hover, .loser > a:hover{
+.container > a:hover, .loser > a:hover, .win > a:hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(255, 244, 244, 0.349);
 }
@@ -116,11 +116,30 @@ canvas{
   box-shadow: 5.5px 7px 0 rgba(255, 255, 255, 0.219);
 }
 
-.loser{
+.objetivo{
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, 0%); 
+    z-index: 11;  
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(5px); 
+    border: 2px solid rgba(25, 143, 211, 0.801);
+    box-shadow: 2px 2px 2px 2px rgba(42, 97, 214, 0.651);
+    letter-spacing: 2px;
+    width: 90%;
+    max-width: 700px;
+}
+
+.loser, .win{
     position: fixed;
     display: none;
     width: 400px;
-    height: 50%;
+    height: 300px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
@@ -134,16 +153,16 @@ canvas{
     border: 2px solid white;
 }
 
-.loser > h1{
+.loser > h1, .win > h1{
     margin-bottom: 30px;
     font-size: 3em;
 }
 
-.loser > h2{
+.loser > h2, .win > h2{
     margin-bottom: 30px;
 }
 
-.loser > a{
+.loser > a, .win > a{
     display: block;
     width: 100%;
     margin: auto;
@@ -154,6 +173,10 @@ canvas{
     border: 2px solid white;
     margin-bottom: 30px;
     padding: 5px;
+}
+
+.win{
+    height: 360px;
 }
 
 footer{

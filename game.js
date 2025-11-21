@@ -1,7 +1,7 @@
 /*Lógica do jogo*/
 /* vars */
 const timer = document.getElementById('timer')
-let seconds = 10
+let seconds = 15
 
 let points = 0
 const points_html = document.getElementById('pontos')
@@ -86,7 +86,7 @@ function updatetime(){
     }
 }
 function startime(){
-    seconds = 11
+    seconds = 16
     timer.textContent = (`⏱️${seconds}s`)
     interval_id = setInterval(updatetime, 1000)
     updatetime()
@@ -109,12 +109,20 @@ function check(){
     }
 /* caso de vitoria*/
 function win(){
-    result = showexpress()
     points++
-    points_html.textContent = ('Pontos: ' + points)
-    input.value = ''
-    clearInterval(interval_id)
-    startime() 
+    if (points == 25){
+        const win_screen = document.querySelector('.win')
+        win_screen.style.display = 'block'
+        input.blur()
+        stoptime()
+    }
+    else{
+        result = showexpress()
+        points_html.textContent = ('Pontos: ' + points)
+        input.value = ''
+        clearInterval(interval_id)
+        startime()
+    } 
 }
 /* caso de derrota*/
 function lose(){
