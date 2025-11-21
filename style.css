@@ -10,6 +10,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -24,7 +25,7 @@ canvas{
     z-index: 0;
 }
 
-.container{
+.container, .container-game{
   position: fixed;
   top: 50%;
   left: 50%;
@@ -37,11 +38,22 @@ canvas{
   text-align: center;
   backdrop-filter: blur(5px); 
   border: 2px solid white;
+  width: 100%;
+  max-width: 1000px;
 }
 
 .container > h1{
     font-family: 'math-font';
     font-size: 7em;
+    margin-bottom: -10px;
+}
+
+.container > h2{
+    display: block;
+    font-size: 1em;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    font-weight: bolder;
 }
 
 .container > a{
@@ -61,21 +73,8 @@ canvas{
     box-shadow: 0 10px 20px rgba(255, 244, 244, 0.349);
 }
 
-footer{
-    position: fixed;
-    letter-spacing: 5px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 10;  
-    margin: auto;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 20px 40px;
-    border-radius: 12px;
-    text-align: center;
-    backdrop-filter: blur(2px);
+.container-game > h1{
+    font-size: 5em;
 }
 
 #calc{
@@ -94,20 +93,11 @@ footer{
   box-shadow: 2.5px 3px 0 #000;
   outline: none;
   transition: ease 0.25s;
+  margin-bottom: 20px;
 }
 
 #resposta:focus {
   box-shadow: 5.5px 7px 0 rgba(255, 255, 255, 0.219);
-}
-
-.container  p{
-    font-family: 'math-font';
-    font-size: 2em;
-    padding-top: 20px;
-}
-
-.container > h2{
-    font-size: 6em;
 }
 
 .loser{
@@ -132,9 +122,11 @@ footer{
     margin-bottom: 30px;
     font-size: 3em;
 }
+
 .loser > h2{
     margin-bottom: 30px;
 }
+
 .loser > a{
     display: block;
     width: 100%;
@@ -148,6 +140,30 @@ footer{
     padding: 5px;
 }
 
+footer{
+    position: fixed;
+    letter-spacing: 5px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;  
+    margin: auto;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 12px;
+    text-align: center;
+    backdrop-filter: blur(2px);
+}
+
 footer > a{
     color: white;
+}
+
+/*responsividade*/
+@media (max-width: 700px){
+    .container-game > h1{
+        font-size: 1.7em;
+    }
 }
