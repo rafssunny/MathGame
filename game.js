@@ -12,7 +12,7 @@ const pontos_finais_dom = document.getElementById('final_points')
 const tela_de_vitoria_dom = document.querySelector('.win')
 
 /* funcoes de expressao numerica*/
-function GerarValores(){
+function gerarValores(){
     let numeros_selecionados = []
 
     /* +1 pra evitar q o valor seja igual a 0*/
@@ -50,8 +50,8 @@ function GerarValores(){
     return numeros_selecionados
 }
 
-function GerarExpressoesNumericas(){
-    let [n1, n2, n3, n4, n5, n6, n7] = GerarValores()
+function gerarExpressoesNumericas(){
+    let [n1, n2, n3, n4, n5, n6, n7] = gerarValores()
     let numero_aleatorio = Math.floor(Math.random() * 8)
 
     switch(numero_aleatorio){
@@ -82,9 +82,9 @@ function GerarExpressoesNumericas(){
     }
 }
 
-function MostrarExpressaoNaTela(){
+function mostrarExpressaoNaTela(){
     const expressao_numerica_dom = document.getElementById('calc')
-    let [expressao_numerica, resultado_da_expressao] = GerarExpressoesNumericas()
+    let [expressao_numerica, resultado_da_expressao] = gerarExpressoesNumericas()
     expressao_numerica_dom.textContent = expressao_numerica
     return resultado_da_expressao
 }
@@ -93,29 +93,29 @@ function MostrarExpressaoNaTela(){
 /* funcoes de timer*/
 let interval_id 
 
-function UpdateTime(){
+function updateTime(){
     seconds--
     timer_dom.textContent = (`⏱️${seconds}s`)
 
     if (seconds == 0){
-        FinalizarJogoComoDerrota()
+        finalizarJogoComoDerrota()
     }
 }
 
-function StartTime(){
+function startTime(){
     seconds = 16
     timer_dom.textContent = (`⏱️${seconds}s`)
-    interval_id = setInterval(UpdateTime, 1000)
-    UpdateTime()
+    interval_id = setInterval(updateTime, 1000)
+    updateTime()
 }
 
-function StopTime(){
+function stopTime(){
     clearInterval(interval_id)
 }
 
 
 /* checar se é vitoria ou derrota*/
-function ChecarResposta(){
+function checarResposta(){
     input_resposta = input.value.trim()
 
     if (input_resposta.trim() == resultado_da_expressao){
@@ -123,54 +123,54 @@ function ChecarResposta(){
         const pontuacao_para_ganhar = 25
 
         if (pontos == pontuacao_para_ganhar){
-            FinalizarJogoComoVitoria()
+            finalizarJogoComoVitoria()
         } else {
-            GerarNovaExpressao()
+            gerarNovaExpressao()
         }
     }
     else if(input.value.trim() == ''){}
     else{
-        FinalizarJogoComoDerrota()
+        finalizarJogoComoDerrota()
     }
 }
 
 /* caso de vitoria*/
-function FinalizarJogoComoVitoria(){
+function finalizarJogoComoVitoria(){
     tela_de_vitoria_dom.style.display = 'block'
     input.blur()
-    StopTime()
+    stopTime()
 }
 
-function GerarNovaExpressao(){
-    resultado_da_expressao = MostrarExpressaoNaTela()
+function gerarNovaExpressao(){
+    resultado_da_expressao = mostrarExpressaoNaTela()
     pontos_dom.textContent = ('Pontos: ' + pontos)
     input.value = ''
     clearInterval(interval_id)
-    StartTime()
+    startTime()
 }
 
 /* caso de derrota*/
-function FinalizarJogoComoDerrota(){
+function finalizarJogoComoDerrota(){
     input.value = ''
-    StopTime()
-    MostrarTelaDeDerrota()
+    stopTime()
+    mostrarTelaDeDerrota()
 }
 
-function MostrarTelaDeDerrota(){
+function mostrarTelaDeDerrota(){
     pontos_finais_dom.textContent = `Sua pontuação: ${pontos}`
     tela_de_derrota_dom.style.display = 'block'
     input.blur()
 }
 
 /* iniciar*/
-resultado_da_expressao = MostrarExpressaoNaTela()
-StartTime()
+resultado_da_expressao = mostrarExpressaoNaTela()
+startTime()
 
 /* logica de pegar entrada */
 const input = document.getElementById('resposta')
 input.focus()
 input.addEventListener('keydown', function(e){
     if(e.code === 'Enter'){
-        ChecarResposta()
+        checarResposta()
     }
 })
