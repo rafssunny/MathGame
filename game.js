@@ -31,8 +31,8 @@ function gerarValores(){
 
     numero_para_potencia = Math.floor(Math.random() * 9) + 1 
 
-    numero_para_divisao_numerador = Math.floor(Math.random() * 101) + 1
-    numero_para_divisao_denominador = Math.floor(Math.random() * 201) + 1
+    numero_para_divisao_numerador = Math.floor(Math.random() * 201) + 1
+    numero_para_divisao_denominador = Math.floor(Math.random() * 101) + 1
     while(numero_para_divisao_numerador % numero_para_divisao_denominador != 0){
         numero_para_divisao_numerador = Math.floor(Math.random() * 201) + 1
         numero_para_divisao_denominador = Math.floor(Math.random() * 101) + 1
@@ -177,6 +177,7 @@ input.addEventListener('keydown', function(e){
     }
 })
 
+/* pra funcionar no mobile tanto o Enter como o botao*/
 input.addEventListener('keyup', function(e){
     if(e.code === 13 || e.key === 'Enter'){
         e.preventDefault()
