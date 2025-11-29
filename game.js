@@ -177,7 +177,7 @@ input.addEventListener('keydown', function(e){
     }
 })
 
-/* pra funcionar no mobile tanto o Enter como o botao*/
+/* pra funcionar no mobile tanto o Enter quanto o botao*/
 input.addEventListener('keyup', function(e){
     if(e.code === 13 || e.key === 'Enter'){
         e.preventDefault()
