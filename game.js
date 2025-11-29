@@ -128,7 +128,9 @@ function checarResposta(){
             gerarNovaExpressao()
         }
     }
-    else if(input.value.trim() == ''){}
+    else if(input.value.trim() == ''){
+        input.focus()
+    }
     else{
         finalizarJogoComoDerrota()
     }
@@ -171,6 +173,12 @@ const input = document.getElementById('resposta')
 input.focus()
 input.addEventListener('keydown', function(e){
     if(e.code === 'Enter'){
+        e.preventDefault()
         checarResposta()
+
+        /* é pra garantir q o input n fique fechando no mobile*/
+        setTimeout(() => {
+            input.focus()
+        }, 10)
     }
 })
