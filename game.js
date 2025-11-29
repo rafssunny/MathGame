@@ -128,9 +128,7 @@ function checarResposta(){
             gerarNovaExpressao()
         }
     }
-    else if(input.value.trim() == ''){
-        input.focus()
-    }
+    else if(input.value.trim() == ''){}
     else{
         finalizarJogoComoDerrota()
     }
@@ -149,6 +147,7 @@ function gerarNovaExpressao(){
     input.value = ''
     clearInterval(interval_id)
     startTime()
+    input.focus()
 }
 
 /* caso de derrota*/
@@ -175,10 +174,8 @@ input.addEventListener('keydown', function(e){
     if(e.code === 'Enter'){
         e.preventDefault()
         checarResposta()
-
-        /* é pra garantir q o input n fique fechando no mobile*/
-        setTimeout(() => {
-            input.focus()
-        }, 10)
     }
+})
+document.querySelector('button').addEventListener('click', function(e){
+    e.preventDefault()
 })
