@@ -176,6 +176,14 @@ input.addEventListener('keydown', function(e){
         checarResposta()
     }
 })
+
+input.addEventListener('keyup', function(e){
+    if(e.code === 13 || e.key === 'Enter'){
+        e.preventDefault()
+        checarResposta()
+    }
+})
+
 document.querySelector('button').addEventListener('click', function(e){
     e.preventDefault()
 })
